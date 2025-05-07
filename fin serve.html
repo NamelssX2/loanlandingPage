@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premier U.S. Financial Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1A2B5C;
+            --accent-color: #C5A063;
+            --secondary-color: #d6f8f1;
+            --text-dark: #83c519;
+            --section-padding: 8rem;
+            --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FFFFFF;
+            color: var(--text-dark);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Premium Header Navigation */
+        header {
+            background: rgba(26, 43, 92, 0.98);
+            padding: 1.2rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links li {
+            position: relative;
+        }
+
+        .nav-links a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.8rem 1.2rem;
+            border-radius: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            background: rgba(221, 28, 28, 0.1);
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #2e2d33;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 0.5rem;
+            min-width: 220px;
+            padding: 1rem 0;
+            z-index: 1000;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .dropdown-menu a {
+            color: var(--primary-color);
+            padding: 0.8rem 1.5rem;
+            display: block;
+        }
+
+        .dropdown-menu a:hover {
+            background: var(--secondary-color);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            color: var(--secondary-color);
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        /* Animated Hero Section */
+        .hero-section {
+            padding: 15rem 2rem 8rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            line-height: 1.1;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: #5A5A5A;
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s 0.3s forwards;
+        }
+
+        .hero-image {
+            position: relative;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            transform: perspective(1000px);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Premium CTA Buttons */
+        .cta-button {
+            background: linear-gradient(135deg, var(--accent-color) 0%, #B08F4E 100%);
+            color: #cf0a0a;
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(197, 160, 99, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(197, 160, 99, 0.4);
+        }
+
+        /* Footer Section */
+        .footer-section {
+            background: var(--primary-color);
+            padding: 2rem;
+            color: var(--secondary-color);
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .footer-nav a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .footer-nav a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-copyright {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Terms Modal */
+        .terms-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .terms-modal.active {
+            display: flex;
+        }
+
+        .terms-content {
+            background: #FFFFFF;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 2rem;
+            border-radius: 1rem;
+            position: relative;
+            color: var(--text-dark);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .terms-content h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .terms-content h3 {
+            color: var(--primary-color);
+            margin: 1rem 0 0.5rem;
+        }
+
+        .terms-content p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .terms-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .terms-close:hover {
+            color: var(--accent-color);
+        }
+
+        /* Scroll Margin for Fixed Header */
+        [id] {
+            scroll-margin-top: 80px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                background: var(--primary-color);
+                flex-direction: column;
+                width: 280px;
+                padding: 2rem;
+                border-radius: 1rem;
+                transition: var(--transition);
+                z-index: 1000;
+            }
+
+            .nav-links.active {
+                display: flex;
+                right: 2rem;
+            }
+
+            .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                background: rgba(255, 255, 255, 0.1);
+                margin: 1rem 0;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .hero-section {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 12rem 2rem 6rem;
+            }
+
+            .hero-image {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                order: 2;
+            }
+
+            .footer-section {
+                padding: 1.5rem;
+            }
+
+            .footer-nav {
+                gap: 1.5rem;
+            }
+
+            .terms-content {
+                max-width: 90%;
+                padding: 1.5rem;
+            }
+
+            .navbar {
+                padding: 0 1rem;
+            }
+
+            .cta-button {
+                padding: 1rem 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.8rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-section {
+                padding: 10rem 1rem 4rem;
+            }
+
+            .footer-nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .footer-copyright {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">USFinTrust</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li class="dropdown">
+                    <a href="#products">Products ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#mortgage">Mortgage Loans</a></li>
+                        <li><a href="#personal">Personal Loans</a></li>
+                        <li><a href="#business">Business Financing</a></li>
+                        <li><a href="#auto">Auto Loans</a></li>
+                        <li><a href="#student">Student Loans</a></li>
+                        <li><a href="#payday">Payday Loans</a></li>
+                    </ul>
+                </li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="cta-button">Apply Now</button>
+            <div class="mobile-menu-toggle">☰</div>
+        </nav>
+    </header>
+
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <h1>Premier Financial Solutions for Americans</h1>
+            <p>Secure your future with competitive rates, flexible terms, and exceptional service from our US-based team.</p>
+            <button class="cta-button">Get Started Today</button>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=1200" alt="American financial services">
+        </div>
+    </section>
+
+    <section id="products" class="products-section">
+        <h2 class="section-title">Our Financial Products</h2>
+        <div class="products-grid">
+            <div class="product-card" id="mortgage">
+                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800" alt="Home Mortgage" loading="lazy">
+                <h3>Home Mortgage Solutions</h3>
+                <p>Competitive rates starting at 3.99% APR</p>
+                <button class="cta-button" style="margin-top: 1.5rem;">Get Rate Quote</button>
+            </div>
+            <div class="product-card" id="personal">
+                <img src="https://images.unsplash.com/photo-1554224155-3a58922a22c3?w=800" alt="Personal Loans" loading="lazy">
+                <h3>Personal Credit Lines</h3>
+                <p>Flexible financing up to $100,000</p>
+                <button class="cta-button" style="margin-top: 1.5rem;">Check Eligibility</button>
+            </div>
+            <div class="product-card" id="business">
+                <img src="https://images.unsplash.com/photo-1556741533-6e6a62bd8b49?w=800" alt="Business Financing" loading="lazy">
+                <h3>Business Growth Loans</h3>
+                <p>Commercial financing solutions up to $5M</p>
+                <button class="cta-button" style="margin-top: 1.5rem;">Request Funding</button>
+            </div>
+            <div class="product-card" id="auto">
+                <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?w=800" alt="Auto Loans" loading="lazy">
+                <h3>Auto Loans</h3>
+                <p>Finance your dream car with flexible terms and competitive rates.</p>
+                <button class="cta-button" style="margin-top: 1.5rem;">Get Pre-Approved</button>
+            </div>
+            <div class="product-card" id="student">
+                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800" alt="Student Loans" loading="lazy">
+                <h3>Student Loans</h3>
+                <p>Support your education with affordable rates and flexible repayment options.</p>
+                <button class="cta-button" style="margin-top: 1.5rem;">Apply for Funding</button>
+            </div>
+            <div class="product-card" id="payday">
+                <img src="https://images.unsplash.com/photo-1556741533-6e6a62bd8b49?w=800" alt="Payday Loans" loading="lazy">
+                <h3>Payday Loans</h3>
+                <p>Short-term loans to cover unexpected expenses until your next paycheck.</p>
+                <button class="cta-button" style="margin-top: 1.5rem;">Apply Now</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-divider">
+        <h2>Trusted Financial Excellence</h2>
+    </section>
+
+    <section id="testimonials" class="testimonials-section">
+        <h2 class="section-title">What Our Clients Say</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="client-photo">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=800" alt="Sarah Johnson" loading="lazy">
+                </div>
+                <div class="testimonial-content">
+                    <p>"USFinTrust helped me secure the perfect mortgage rate. Their team was professional and made the entire process seamless!"</p>
+                    <div class="client-info">
+                        <h4>Sarah Johnson</h4>
+                        <p>Homeowner, Chicago</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="client-photo">
+                    <img src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?w=800" alt="Michael Chen" loading="lazy">
+                </div>
+                <div class="testimonial-content">
+                    <p>"The business loan process was faster than I ever imagined. We're now expanding to three new states!"</p>
+                    <div class="client-info">
+                        <h4>Michael Chen</h4>
+                        <p>Small Business Owner, Austin</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="client-photo">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800" alt="Emily Rodriguez" loading="lazy">
+                </div>
+                <div class="testimonial-content">
+                    <p>"Refinancing through USFinTrust saved me $450/month. Highly recommend their services!"</p>
+                    <div class="client-info">
+                        <h4>Emily Rodriguez</h4>
+                        <p>Real Estate Investor, Miami</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="client-photo">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800" alt="David Martinez" loading="lazy">
+                </div>
+                <div class="testimonial-content">
+                    <p>"USFinTrust’s Payday Loan helped me bridge a financial gap quickly. The process was straightforward, and the support team was fantastic!"</p>
+                    <div class="client-info">
+                        <h4>David Martinez</h4>
+                        <p>Freelancer, Los Angeles</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="client-photo">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800" alt="Lisa Thompson" loading="lazy">
+                </div>
+                <div class="testimonial-content">
+                    <p>"The auto loan from USFinTrust made buying my new car a breeze. Quick approval and great rates!"</p>
+                    <div class="client-info">
+                        <h4>Lisa Thompson</h4>
+                        <p>Teacher, Seattle</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <h2 class="section-title">Connect With Us</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="info-card">
+                    <h3>Headquarters</h3>
+                    <p>123 Financial District<br>
+                    New York, NY 10005<br>
+                    Phone: (212) 555-0100</p>
+                </div>
+                <div class="info-card">
+                    <h3>Business Hours</h3>
+                    <p>Monday-Friday: 8am - 8pm EST<br>
+                    Saturday: 9am - 5pm EST<br>
+                    Sunday: Closed</p>
+                </div>
+            </div>
+            <form class="contact-form">
+                <div class="form-group">
+                    <input type="text" placeholder="Full Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Email Address" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" placeholder="Phone Number" required>
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="cta-button">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer-section">
+        <div class="footer-container">
+            <div class="footer-nav">
+                <a href="#home">Home</a>
+                <a href="#products">Products</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="#contact">Contact</a>
+                <a href="#terms" class="terms-link">Terms and Conditions</a>
+            </div>
+            <p class="footer-copyright">&copy; 2025 USFinTrust. All rights reserved.</p>
+        </div>
+        <div class="terms-modal" id="terms">
+            <div class="terms-content">
+                <h2>Terms and Conditions</h2>
+                <span class="terms-close">&times;</span>
+                <p><strong>Last Updated: April 25, 2025</strong></p>
+                <h3>1. Introduction</h3>
+                <p>Welcome to USFinTrust. These Terms and Conditions govern your use of our website and financial services, including mortgages, personal loans, business loans, auto loans, student loans, and payday loans. By accessing our services, you agree to these terms.</p>
+                <h3>2. Our Services</h3>
+                <p>USFinTrust provides financial products with competitive rates and flexible terms. All services are subject to approval based on eligibility criteria, which may include credit checks and income verification.</p>
+                <h3>3. User Responsibilities</h3>
+                <p>You agree to provide accurate and complete information during applications and to comply with repayment schedules. Misrepresentation may result in denial of services or legal action.</p>
+                <h3>4. Limitation of Liability</h3>
+                <p>USFinTrust is not liable for losses arising from unauthorized access, market fluctuations, or errors in application data. Our services are provided “as is” without warranties beyond those required by law.</p>
+                <h3>5. Changes to Terms</h3>
+                <p>We may update these terms at any time. Changes will be posted on this website, and continued use constitutes acceptance.</p>
+                <h3>6. Contact Us</h3>
+                <p>For questions, contact us at 123 Financial District, New York, NY 10005, or (212) 555-0100, as listed in our Contact section.</p>
+                <p>By using our services, you acknowledge that you have read and understood these Terms and Conditions.</p>
+            </div>
+        </div>
+    </footer>
+
+    <style id="non-critical-css">
+        /* Products Section */
+        .products-section {
+            padding: var(--section-padding) 2rem;
+            background: var(--secondary-color);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: #FFFFFF;
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: var(--section-padding) 2rem;
+            background: var(--secondary-color);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: #FFFFFF;
+            padding: 2rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .client-photo img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.5rem;
+        }
+
+        .testimonial-content p {
+            font-size: 1rem;
+            color: #5A5A5A;
+            margin-bottom: 1rem;
+        }
+
+        .client-info h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .client-info p {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: var(--section-padding) 2rem;
+            background: #FFFFFF;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: var(--secondary-color);
+            padding: 2rem;
+            border-radius: 1rem;
+        }
+
+        .info-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .info-card p {
+            color: #5A5A5A;
+            line-height: 1.6;
+        }
+
+        .contact-form {
+            background: var(--secondary-color);
+            padding: 2rem;
+            border-radius: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 1rem;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            background: #FFFFFF;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 8px rgba(197, 160, 99, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Section Divider */
+        .section-divider {
+            background: linear-gradient(135deg, var(--accent-color) 0%, #8B6F3A 100%);
+            padding: var(--section-padding) 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-divider h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin: 0;
+        }
+
+        /* Responsive Design (Non-Critical) */
+        @media (max-width: 1200px) {
+            .products-section,
+            .testimonials-section,
+            .contact-section {
+                padding: var(--section-padding) 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .products-section,
+            .testimonials-section,
+            .contact-section {
+                padding: 4rem 1rem;
+            }
+
+            .section-divider {
+                padding: 4rem 1rem;
+            }
+
+            .section-divider h2 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                order: 2;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product-card img,
+            .hero-image img {
+                height: 150px;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                font-size: 0.9rem;
+            }
+
+            .client-photo img {
+                width: 60px;
+                height: 60px;
+            }
+
+            .section-divider h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu Toggle
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+
+            // Close menu on click outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.nav-links') && !e.target.closest('.mobile-menu-toggle')) {
+                    navLinks.classList.remove('active');
+                }
+            });
+
+            // Smooth Scroll
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        navLinks.classList.remove('active'); // Close mobile menu on link click
+                    }
+                });
+            });
+
+            // Dropdown Menu Hover for Desktop
+            const dropdowns = document.querySelectorAll('.dropdown');
+            dropdowns.forEach(dropdown => {
+                dropdown.addEventListener('mouseenter', () => {
+                    if (window.innerWidth > 1200) {
+                        dropdown.querySelector('.dropdown-menu').style.display = 'block';
+                    }
+                });
+                dropdown.addEventListener('mouseleave', () => {
+                    if (window.innerWidth > 1200) {
+                        dropdown.querySelector('.dropdown-menu').style.display = 'none';
+                    }
+                });
+                // Mobile dropdown toggle
+                dropdown.addEventListener('click', () => {
+                    if (window.innerWidth <= 1200) {
+                        const menu = dropdown.querySelector('.dropdown-menu');
+                        menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+                    }
+                });
+            });
+
+            // Terms Modal
+            const termsLink = document.querySelector('.terms-link');
+            const termsModal = document.querySelector('.terms-modal');
+            const termsClose = document.querySelector('.terms-close');
+
+            termsLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                termsModal.classList.add('active');
+            });
+
+            termsClose.addEventListener('click', () => {
+                termsModal.classList.remove('active');
+            });
+
+            document.addEventListener('click', (e) => {
+                if (e.target === termsModal) {
+                    termsModal.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
